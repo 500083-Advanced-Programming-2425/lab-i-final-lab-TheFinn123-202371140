@@ -3,7 +3,7 @@
 #include <queue> // For BFS traversal
 #include <algorithm> // For sorting
 #include "Solution.h" // Header for the Solution class
-#include "User.h" // Stops it being buried under External Dependencies
+#include "User.h" // file is under external dependencies when opened in visual studio
 
 // Constructor: opens the output file for writing
 Solution::Solution() : _outFile("Output.txt") {}

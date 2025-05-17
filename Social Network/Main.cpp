@@ -25,7 +25,7 @@ int main(int, char**) {
 	const auto buildStart = high_resolution_clock::now();
 	const auto buildSuccess = solver.buildNetwork("Users.csv", "Friendships.csv");
 	const auto buildEnd = high_resolution_clock::now();
-	const auto buildTime = std::min(duration_cast<microseconds>(buildEnd - buildStart).count(), 1LL);
+	const auto buildTime = std::max(duration_cast<microseconds>(buildEnd - buildStart).count(), 1LL);
 
 	if (buildSuccess) {
 		std::cout << std::fixed << std::setprecision(1) << "BuildNetwork - " << buildTime << " microseconds" << std::endl;
@@ -37,14 +37,14 @@ int main(int, char**) {
 	// Timing processing of individual commands
 
 	std::ifstream fin("Commands.txt");
-	while (!fin.eof())	{
+	while (!fin.eof()) {
 		std::string command;
 		std::getline(fin, command);
 
 		const auto cmdStart = high_resolution_clock::now();
 		const auto cmdSuccess = solver.processCommand(command);
 		const auto cmdEnd = high_resolution_clock::now();
-		const auto cmdTime = std::min(duration_cast<microseconds>(cmdEnd - cmdStart).count(), 1LL);
+		const auto cmdTime = std::max(duration_cast<microseconds>(cmdEnd - cmdStart).count(), 1LL);
 
 		if (cmdSuccess) {
 			std::cout << std::fixed << std::setprecision(1) << command << " - " << cmdTime << " microseconds" << std::endl;
